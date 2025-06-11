@@ -9,7 +9,7 @@ import 'package:e_ride_up/core/widgets/custom_drawer.dart';
 import 'package:e_ride_up/core/widgets/custom_text.dart';
 import 'package:e_ride_up/models/DetailsUserModel.dart';
 import 'package:e_ride_up/models/LoginOtpResponse.dart';
-import 'package:e_ride_up/providers/auth_provider.dart';
+import 'package:e_ride_up/providers/custom_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -36,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Future<void> _loadUserData() async {
-    final provider = Provider.of<AuthProvider>(context, listen: false);
+    final provider = Provider.of<CustomProvider>(context, listen: false);
       Customer? customer=   await SharedPreferenceService.getUserDetails();
       await provider.getDetailsUser(customer?.email??"", context);
       _user=provider.detailsUserModel?.customer;
@@ -81,7 +81,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         profileImage: _imageUrl
       );
 
-      final provider = Provider.of<AuthProvider>(context, listen: false);
+      final provider = Provider.of<CustomProvider>(context, listen: false);
       await provider.updateCustomerDetails(customer, context);
       // if(provider.updateCustomerModel?.message!=null && provider.updateCustomerModel?.status==true){
       //   // final updatedUser = await SharedPreferenceService.getUserDetails();
@@ -148,7 +148,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       drawer:CustomDrawer(),
       backgroundColor: Colors.white,
-      body: Consumer<AuthProvider>(
+      body: Consumer<CustomProvider>(
         builder: (context, value, child) =>
          Stack(
           children: [
@@ -241,7 +241,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                       SizedBox(height: 20),
 
-                      Consumer<AuthProvider>(
+                      Consumer<CustomProvider>(
                         builder: (context, provider, child) {
                           return ElevatedButton.icon(
                             onPressed: provider.isUpdateProfileLoading ? null : _onSave,

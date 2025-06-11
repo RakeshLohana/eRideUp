@@ -3,7 +3,7 @@ import 'package:e_ride_up/core/services/shared_preference_service.dart';
 import 'package:e_ride_up/core/utils/app_utility.dart';
 import 'package:e_ride_up/core/utils/route_utils.dart';
 import 'package:e_ride_up/models/DetailsUserModel.dart';
-import 'package:e_ride_up/providers/auth_provider.dart';
+import 'package:e_ride_up/providers/custom_provider.dart';
 import 'package:e_ride_up/views/dashboard_screen.dart';
 import 'package:e_ride_up/views/login_screen.dart';
 import 'package:e_ride_up/views/all_rides_screen.dart';
@@ -22,7 +22,7 @@ class CustomDrawer extends StatefulWidget {
 class _CustomDrawerState extends State<CustomDrawer> {
 
   Future<void> _loadUserData() async {
-    final provider = Provider.of<AuthProvider>(context, listen: false);
+    final provider = Provider.of<CustomProvider>(context, listen: false);
       Customer? customer=   await SharedPreferenceService.getUserDetails();
       await provider.getDetailsUser(customer?.email??"", context);
 
@@ -38,7 +38,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthProvider>(
+    return Consumer<CustomProvider>(
       builder: (context, value, child) =>
           Drawer(
             width: 250,

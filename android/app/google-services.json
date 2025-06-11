@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "867452178548",
+    "project_id": "erideup",
+    "storage_bucket": "erideup.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867452178548:android:b125f3268204d1ef240121",
+        "android_client_info": {
+          "package_name": "com.erideup.app.e_ride_up"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "867452178548-7ggad9bjumbghl5vgbbppu4eadh6v3ku.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.erideup.app.e_ride_up",
+            "certificate_hash": "cbe34ead63e4f7c9406ab2799fac8eb6773d27c2"
+          }
+        },
+        {
+          "client_id": "867452178548-qbgnmi9kftc895dtq03endhf4prljl4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1hRlB4JXXGSwpxaSvADE9vOoDUAYwi0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "867452178548-qbgnmi9kftc895dtq03endhf4prljl4b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

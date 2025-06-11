@@ -13,4 +13,5 @@ class AppUrls {
   static const String updateCustomer = '/update-customer';
   static const String deleteCustomer = '/delete-customer';
   static const String detailsUser = '/details-user';
+  static const String signUp = '/sign-up';
 }

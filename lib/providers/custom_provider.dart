@@ -10,18 +10,27 @@ import 'package:e_ride_up/models/LoginOtpResponse.dart';
 import 'package:e_ride_up/models/UpdateCustomerModel.dart';
 import 'package:e_ride_up/views/dashboard_screen.dart';
 import 'package:e_ride_up/views/login_screen.dart';
+import 'package:e_ride_up/views/otp_screen.dart';
 import 'package:flutter/material.dart';
 import '../core/services/api_client.dart';
 import '../core/services/api_service.dart';
 import '../core/utils/toastification_utility.dart';
 import '../models/LoginResponse.dart';
+import '../models/SignupRequestModel.dart';
 
-class AuthProvider extends ChangeNotifier {
+class CustomProvider extends ChangeNotifier {
   final ApiService _apiService = ApiService();
-  bool _isLoginLoading = false;
-  bool _isVerifyOtpLoading = false;
 
+
+  bool _isSignUpLoading = false;
+  bool get isSignUpLoading => _isSignUpLoading;
+
+
+  bool _isLoginLoading = false;
   bool get isLoginLoading => _isLoginLoading;
+
+
+  bool _isVerifyOtpLoading = false;
   bool get isVerifyOtpLoading => _isVerifyOtpLoading;
 
 
@@ -36,6 +45,8 @@ class AuthProvider extends ChangeNotifier {
   GeneralApiResponse? _generalApiResponse;
   GeneralApiResponse? get generalApiResponse=>_generalApiResponse;
 
+  GeneralApiResponse? _signUpResponse;
+  GeneralApiResponse? get signUpResponse=>_signUpResponse;
 
 
   DetailsUserModel? _detailsUserModel;
@@ -101,6 +112,41 @@ class AuthProvider extends ChangeNotifier {
 
     } finally {
       _isLoginLoading = false;
+      notifyListeners();
+    }
+  }
+
+
+  Future<void> signUp(SignupRequestModel signUpRequestModel, BuildContext context) async {
+    _isSignUpLoading = true;
+    notifyListeners();
+
+    try {
+      _signUpResponse = await _apiService.signUp(signUpRequestModel);
+      if(_signUpResponse?.status==true){
+        ToastUtil.showToast(context: context,message: _signUpResponse?.message??"",type: ToastType.success);
+         if(bool.parse(signUpRequestModel.isGoogle??"false")==true){
+           await SharedPreferenceService.saveUserDetails(LoginOtpResponse(
+             customer: Customer(
+               phone: signUpRequestModel.phone,
+               email: signUpRequestModel.email,
+
+             )
+           ));
+
+           RouteUtils.pushReplacement(context, DashboardScreen());
+
+         }else{
+           RouteUtils.pushReplacement(context, OTPScreen());
+
+         }
+
+      }
+      notifyListeners();
+    } catch (e) {
+      ToastUtil.showToast(context: context,message: 'SignUp Failed',type: ToastType.error);
+    } finally {
+      _isSignUpLoading = false;
       notifyListeners();
     }
   }
@@ -249,6 +295,9 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+
+
 
 
 }

@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:e_ride_up/models/DetailsUserModel.dart';
 import 'package:e_ride_up/models/GeneralApiResponse.dart';
 import 'package:e_ride_up/models/LoginOtpResponse.dart';
+import 'package:e_ride_up/models/SignupRequestModel.dart';
 import 'package:e_ride_up/models/UpdateCustomerModel.dart';
 
 
@@ -24,6 +25,16 @@ class ApiService {
       },
     );
     return LoginResponse.fromJson(response.data);
+  }
+
+
+  Future<GeneralApiResponse> signUp(SignupRequestModel signUpRequestModel) async {
+    Response response = await _client.post(
+      isFormData: true,
+      AppUrls.signUp,
+        signUpRequestModel.toJson()
+    );
+    return GeneralApiResponse.fromJson(response.data);
   }
 
 

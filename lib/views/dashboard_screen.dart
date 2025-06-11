@@ -1,6 +1,6 @@
 import 'package:e_ride_up/core/constants/app_colors.dart';
 import 'package:e_ride_up/core/widgets/custom_drawer.dart';
-import 'package:e_ride_up/providers/auth_provider.dart';
+import 'package:e_ride_up/providers/custom_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +28,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return  Consumer<AuthProvider>(
+    return  Consumer<CustomProvider>(
       builder: (context, value, child) =>
        Scaffold(
         backgroundColor: Colors.white,

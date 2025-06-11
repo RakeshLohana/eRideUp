@@ -4,7 +4,7 @@ import 'package:e_ride_up/core/widgets/custom_drawer.dart';
 import 'package:e_ride_up/core/widgets/ride_button.dart';
 import 'package:e_ride_up/core/widgets/ride_history_card.dart';
 import 'package:e_ride_up/models/DetailsUserModel.dart';
-import 'package:e_ride_up/providers/auth_provider.dart';
+import 'package:e_ride_up/providers/custom_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -40,7 +40,7 @@ class _AllRidesScreenState extends State<AllRidesScreen> {
         title: const Text("All Rides", style: TextStyle(color: Colors.black)),
 
       ),
-      body: Consumer<AuthProvider>(
+      body: Consumer<CustomProvider>(
         builder: (context, authProvider, child) =>
          Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),

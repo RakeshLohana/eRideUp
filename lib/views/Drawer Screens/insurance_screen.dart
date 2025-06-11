@@ -2,7 +2,7 @@ import 'package:e_ride_up/core/constants/app_colors.dart';
 import 'package:e_ride_up/core/services/shared_preference_service.dart';
 import 'package:e_ride_up/core/utils/app_utility.dart';
 import 'package:e_ride_up/models/DetailsUserModel.dart';
-import 'package:e_ride_up/providers/auth_provider.dart';
+import 'package:e_ride_up/providers/custom_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -30,14 +30,14 @@ class _InsuranceScreenState extends State<InsuranceScreen> {
 
 
   Future<void> _loadUserData() async {
-    final provider = Provider.of<AuthProvider>(context, listen: false);
+    final provider = Provider.of<CustomProvider>(context, listen: false);
     Customer? customer=   await SharedPreferenceService.getUserDetails();
     await provider.getDetailsUser(customer?.email??"", context);
 
   }
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthProvider>(
+    return Consumer<CustomProvider>(
       builder: (context, value, child) =>
        Stack(
         children: [

@@ -6,7 +6,7 @@ import 'package:e_ride_up/core/utils/route_utils.dart';
 import 'package:e_ride_up/core/widgets/custom_drawer.dart';
 import 'package:e_ride_up/core/widgets/custom_text.dart';
 import 'package:e_ride_up/models/DetailsUserModel.dart';
-import 'package:e_ride_up/providers/auth_provider.dart';
+import 'package:e_ride_up/providers/custom_provider.dart';
 import 'package:e_ride_up/views/all_rides_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +43,7 @@ class _RideScreenState extends State<RideScreen> {
   }
 
   void _loadData() async {
-      final provider = Provider.of<AuthProvider>(context, listen: false);
+      final provider = Provider.of<CustomProvider>(context, listen: false);
       Customer? customer = await SharedPreferenceService.getUserDetails();
       await provider.getDetailsUser(customer?.email??"", context);
 
@@ -65,7 +65,7 @@ class _RideScreenState extends State<RideScreen> {
       ),
       backgroundColor: Colors.white,
       drawer: CustomDrawer(),
-      body: Consumer<AuthProvider>(
+      body: Consumer<CustomProvider>(
         builder: (context, authProvider, child) => Stack(
           children: [
             SafeArea(

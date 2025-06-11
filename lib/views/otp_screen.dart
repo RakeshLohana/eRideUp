@@ -2,7 +2,7 @@ import 'package:e_ride_up/core/constants/app_colors.dart';
 import 'package:e_ride_up/core/constants/general.dart';
 import 'package:e_ride_up/core/utils/toastification_utility.dart';
 import 'package:e_ride_up/core/widgets/custom_text.dart';
-import 'package:e_ride_up/providers/auth_provider.dart';
+import 'package:e_ride_up/providers/custom_provider.dart';
 import 'package:e_ride_up/views/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +31,7 @@ class OTPScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Consumer<AuthProvider>(
+      body: Consumer<CustomProvider>(
         builder: (context, authProvider, child) =>
          SafeArea(
           child: Padding(

@@ -4,7 +4,7 @@ import 'package:e_ride_up/core/utils/toastification_utility.dart';
 import 'package:e_ride_up/core/widgets/custom_drawer.dart';
 import 'package:e_ride_up/models/DetailsUserModel.dart';
 import 'package:e_ride_up/models/LoginOtpResponse.dart';
-import 'package:e_ride_up/providers/auth_provider.dart';
+import 'package:e_ride_up/providers/custom_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
@@ -78,7 +78,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
 
             const Gap(24),
 
-            Consumer<AuthProvider>(
+            Consumer<CustomProvider>(
               builder: (context, provider, _) {
                 return ElevatedButton.icon(
                   onPressed: provider.isDeleteProfileLoading
