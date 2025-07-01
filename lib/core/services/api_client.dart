@@ -11,6 +11,9 @@ class ApiClient {
   ));
 
   ApiClient() {
+
+
+
     _dio.interceptors.add(PrettyDioLogger(
       requestHeader: true,
       requestBody: true,

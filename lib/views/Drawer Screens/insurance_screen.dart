@@ -48,7 +48,7 @@ class _InsuranceScreenState extends State<InsuranceScreen> {
                   children: [
 
                     Container(
-                      height: 150,
+                      height: 130,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: AppColor.lightOrange,
@@ -61,7 +61,7 @@ class _InsuranceScreenState extends State<InsuranceScreen> {
                     Align(
                       alignment: Alignment.topRight,
                       child: Container(
-                        height: 160,
+                        height: 140,
                         width: 220,
                         decoration: BoxDecoration(
 
@@ -95,11 +95,11 @@ class _InsuranceScreenState extends State<InsuranceScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: SvgPicture.asset(
                     MyAssets.carInsurance,
-                    height: 170,
+                    height: 150,
                   ),
                 ),
 
-                Gap(20),
+                Gap(10),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -112,13 +112,33 @@ class _InsuranceScreenState extends State<InsuranceScreen> {
                         ),
                       ),
                       SizedBox(height: 12),
-                      InfoRow(text: value.detailsUserModel?.customer?.insurancePlan?.duration??""),
-                      InfoRow(text: value.detailsUserModel?.customer?.insurancePlan?.rides??""),
-                      InfoRow(text: value.detailsUserModel?.customer?.insurancePlan?.perDay??""),
+                      SizedBox(
+                        height: 150,
+                        child: ListView.builder(
+                          itemCount: value.detailsUserModel?.customer?.insurancePlan?.length ?? 0,
+                          itemBuilder: (context, index) {
+                            InsurancePlan insurancePlan =
+                                value.detailsUserModel?.customer?.insurancePlan?[index] ??
+                                    InsurancePlan();
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  InfoRow(text: insurancePlan.duration ?? ""),
+                                  InfoRow(text: insurancePlan.rides ?? ""),
+                                  InfoRow(text: insurancePlan.perDay ?? ""),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+
                     ],
                   ),
                 ),
-                Gap(30),
+                Gap(12),
                 SizedBox(
                   width: 160,
                   child: CustomElevatedButton(

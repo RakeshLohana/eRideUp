@@ -1,11 +1,14 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:e_ride_up/models/CreateRideModel.dart';
 import 'package:e_ride_up/models/DetailsUserModel.dart';
 import 'package:e_ride_up/models/GeneralApiResponse.dart';
+import 'package:e_ride_up/models/GetRideDetails.dart';
 import 'package:e_ride_up/models/LoginOtpResponse.dart';
 import 'package:e_ride_up/models/SignupRequestModel.dart';
 import 'package:e_ride_up/models/UpdateCustomerModel.dart';
+import 'package:e_ride_up/models/WalletSummaryModel.dart';
 
 
 import '../../models/LoginResponse.dart';
@@ -25,6 +28,18 @@ class ApiService {
       },
     );
     return LoginResponse.fromJson(response.data);
+  }
+
+
+  Future<WalletSummaryModel> getWalletSummary(String emailOrPhone) async {
+    Response response = await _client.post(
+      isFormData: true,
+      AppUrls.getWalletSummary,
+      {
+        'email_or_phone': emailOrPhone,
+      },
+    );
+    return WalletSummaryModel.fromJson(response.data);
   }
 
 
@@ -93,6 +108,39 @@ class ApiService {
     return DetailsUserModel.fromJson(response.data);
   }
 
+
+
+  Future<CreateRideModel> createRide(String email,String lat,String lng ) async {
+
+
+    Response response = await _client.post(
+      isFormData: true,
+      AppUrls.createRide,
+      {
+        "email":email,
+        "lat":lat,
+        "lng":lng
+      },
+    );
+
+    return CreateRideModel.fromJson(response.data);
+  }
+
+
+  Future<GetRideDetails> getRide(String email ,String rideId) async {
+
+
+    Response response = await _client.post(
+      isFormData: true,
+      AppUrls.getRide+"/${rideId}" ,
+      {
+        "email":email,
+
+      },
+    );
+
+    return GetRideDetails.fromJson(response.data);
+  }
 
 
 }

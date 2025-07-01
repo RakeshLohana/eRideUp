@@ -14,4 +14,8 @@ class AppUrls {
   static const String deleteCustomer = '/delete-customer';
   static const String detailsUser = '/details-user';
   static const String signUp = '/sign-up';
+  static const String getWalletSummary = '/get-wallet-summary/1';
+  static const String createRide = '/create-ride';
+  static const String getRide = '/get-ride';
+
 }

@@ -8,6 +8,7 @@ import 'package:e_ride_up/views/dashboard_screen.dart';
 import 'package:e_ride_up/views/login_screen.dart';
 import 'package:e_ride_up/views/all_rides_screen.dart';
 import 'package:e_ride_up/views/privacy_policy_screen.dart';
+import 'package:e_ride_up/views/wallet_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
@@ -122,6 +123,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     AppUtility.launchUrlFun(AppUtility.getPhoneCallLaunchUrl(phoneNumber: value.detailsUserModel?.customer?.contactNumber??"222"));
 
                   }),
+                  DrawerItem(icon: Icons.wallet, text: "Wallet", onTap: () {
+                    RouteUtils.pop(context);
+                    RouteUtils.push(context, WalletScreen());
+
+                  }),
+
                   DrawerItem(icon: Icons.settings, text: "Settings", onTap: () {
                     RouteUtils.pop(context);
                     RouteUtils.push(context, PrivacyPolicyScreen());
@@ -174,7 +181,7 @@ class DrawerItem extends StatelessWidget {
         text,
         style: TextStyle(color: textColor ?? Colors.black),
       ),
-      trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
+      // trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
       onTap: onTap,
     );
   }

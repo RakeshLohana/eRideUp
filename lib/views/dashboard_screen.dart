@@ -1,6 +1,7 @@
 import 'package:e_ride_up/core/constants/app_colors.dart';
 import 'package:e_ride_up/core/widgets/custom_drawer.dart';
 import 'package:e_ride_up/providers/custom_provider.dart';
+import 'package:e_ride_up/views/all_rides_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +24,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final List<Widget> _screens = [
     ProfileScreen(),
     InsuranceScreen(),
-    RideScreen(),
+    AllRidesScreen(),
   ];
 
   @override

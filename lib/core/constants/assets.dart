@@ -15,6 +15,7 @@ class MyAssets {
   ///Svgs
   static const String googleIcon = basePath+ 'google.svg';
   static const String carInsurance = basePath+ 'car_insurance.svg';
+  static const String cab = basePath+ 'cab.svg';
 
 
 }

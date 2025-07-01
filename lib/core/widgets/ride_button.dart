@@ -1,13 +1,15 @@
 import 'package:e_ride_up/core/constants/app_colors.dart';
 import 'package:e_ride_up/core/constants/general.dart';
+import 'package:e_ride_up/core/utils/app_utility.dart';
 import 'package:flutter/material.dart';
 
 class RideButton extends StatefulWidget {
   final String title;
   final Color iconColor;
   final String status;
+  final void Function()? onTap;
   final IconData icon;
-  const RideButton({super.key, required this.title, required this.iconColor, required this.icon, required this.status});
+  const RideButton({super.key, required this.title, required this.iconColor, required this.icon, required this.status, this.onTap});
 
   @override
   State<RideButton> createState() => _RideButtonState();
@@ -49,6 +51,7 @@ class _RideButtonState extends State<RideButton> {
             borderRadius: BorderRadius.circular(30),
           ),
           child: ListTile(
+            onTap: widget.onTap,
             leading: const Icon(Icons.directions_car, color: Colors.white),
             title: Text(widget.title, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
             trailing: Icon(widget.icon, color: widget.iconColor),

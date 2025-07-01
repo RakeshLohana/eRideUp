@@ -4,10 +4,13 @@ import 'package:e_ride_up/core/constants/general.dart';
 import 'package:e_ride_up/core/services/shared_preference_service.dart';
 import 'package:e_ride_up/core/utils/app_utility.dart';
 import 'package:e_ride_up/core/utils/route_utils.dart';
+import 'package:e_ride_up/models/CreateRideModel.dart';
 import 'package:e_ride_up/models/DetailsUserModel.dart';
 import 'package:e_ride_up/models/GeneralApiResponse.dart';
+import 'package:e_ride_up/models/GetRideDetails.dart';
 import 'package:e_ride_up/models/LoginOtpResponse.dart';
 import 'package:e_ride_up/models/UpdateCustomerModel.dart';
+import 'package:e_ride_up/models/WalletSummaryModel.dart';
 import 'package:e_ride_up/views/dashboard_screen.dart';
 import 'package:e_ride_up/views/login_screen.dart';
 import 'package:e_ride_up/views/otp_screen.dart';
@@ -29,6 +32,16 @@ class CustomProvider extends ChangeNotifier {
   bool _isLoginLoading = false;
   bool get isLoginLoading => _isLoginLoading;
 
+  bool _isWalletSummaryLoading = false;
+  bool get isWalletSummaryLoading => _isWalletSummaryLoading;
+
+
+  bool _isCreateRideLoading = false;
+  bool get isCreateRideLoading => _isCreateRideLoading;
+
+  bool _isGetRideLoading = false;
+  bool get isGetRideLoading => _isGetRideLoading;
+
 
   bool _isVerifyOtpLoading = false;
   bool get isVerifyOtpLoading => _isVerifyOtpLoading;
@@ -37,6 +50,15 @@ class CustomProvider extends ChangeNotifier {
   LoginResponse? _loginData;
   LoginResponse? get loginData=>_loginData;
 
+
+  WalletSummaryModel? _walletSummaryModel;
+  WalletSummaryModel? get walletSummaryModel=>_walletSummaryModel;
+
+  CreateRideModel? _createRideModel;
+  CreateRideModel? get createRideModel=>_createRideModel;
+
+  GetRideDetails? _getRideDetails;
+  GetRideDetails? get getRideDetails=>_getRideDetails;
 
   UpdateCustomerModel? _updateCustomerModel;
   UpdateCustomerModel? get updateCustomerModel=>_updateCustomerModel;
@@ -100,6 +122,73 @@ class CustomProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+
+
+  Future<void> getWalletSummary(String emailOrPhone, BuildContext context) async {
+    _isWalletSummaryLoading = true;
+    notifyListeners();
+
+    try {
+      _walletSummaryModel = await _apiService.getWalletSummary(emailOrPhone);
+      if(_walletSummaryModel?.status==true){
+        printLog(_walletSummaryModel?.toJson());
+      }
+    } catch (e) {
+      printLog(e.toString());
+      ToastUtil.showToast(context: context,message: ' login failed: ${e}',type: ToastType.error);
+
+
+    } finally {
+      _isWalletSummaryLoading = false;
+      notifyListeners();
+    }
+  }
+
+
+  Future<void> getRide(String email,String rideId, BuildContext context) async {
+    _isGetRideLoading = true;
+    notifyListeners();
+
+    try {
+      _getRideDetails = await _apiService.getRide(email,rideId);
+      if(_getRideDetails?.status==true){
+        printLog(_getRideDetails?.toJson());
+      }
+    } catch (e) {
+      printLog(e.toString());
+      ToastUtil.showToast(context: context,message: 'Getting Ride details failed',type: ToastType.error);
+
+
+    } finally {
+      _isGetRideLoading = false;
+      notifyListeners();
+    }
+  }
+
+
+
+
+  Future<void> createRide(String email,String lat,String lng  , BuildContext context) async {
+    _isCreateRideLoading = true;
+    notifyListeners();
+
+    try {
+      _createRideModel = await _apiService.createRide(email,lat,lng);
+      if(_createRideModel?.status==true){
+        printLog(_createRideModel?.toJson());
+      }
+    } catch (e) {
+      printLog(e.toString());
+      ToastUtil.showToast(context: context,message: 'Ride create failed',type: ToastType.error);
+
+
+    } finally {
+      _isCreateRideLoading = false;
+      notifyListeners();
+    }
+  }
+
+
   Future<void> login(String email,String phone, BuildContext context) async {
     _isLoginLoading = true;
     notifyListeners();
@@ -107,7 +196,9 @@ class CustomProvider extends ChangeNotifier {
     try {
       _loginData = await _apiService.login(email,phone);
     } catch (e) {
-      ToastUtil.showToast(context: context,message: ' login failed: ${e}',type: ToastType.success);
+      printLog(e.toString());
+
+      ToastUtil.showToast(context: context,message: ' login failed: ${e}',type: ToastType.error);
 
 
     } finally {

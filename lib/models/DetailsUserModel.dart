@@ -1,7 +1,7 @@
 import 'dart:convert';
 /// status : true
 /// message : "Details Fetch"
-/// customer : {"id":"7","name":"Rakesh","email":"rakeshlohana15@gmail.com","phone":"+923463960892","address":"Sahib zada","city":"","state":"","country":"Pakistan","postal_code":"9200","date_of_birth":"2025-05-30","gender":"male","profile_image":"https://innsurance.flash-speed.online/uploads/images/1748120983_appointment.png","status":"1","isDeleted":"0","createdBy":"15","createdDtm":"2025-05-13 15:33:46","updatedBy":null,"updatedDtm":"2025-05-28 17:39:13","total_rides":"3","used_rides":"2","remaining_rides":"1","contact_number":"03133473749","insurance_plan":{"duration":" $15 / 6 Months","rides":"3 Free Rides","per_day":"$50 per ride Covered"},"rides":[{"date":"2025-05-20","time":"10:00 AM","ride_id":"RIDE001","pickup":"Main Street","drop":"Park Avenue","status":"Completed"},{"date":"2025-05-22","time":"02:00 PM","ride_id":"RIDE002","pickup":"Central Mall","drop":"Greenwood Plaza","status":"Ongoing"},{"date":"2025-05-25","time":"04:00 PM","ride_id":"RIDE003","pickup":"Sunset Boulevard","drop":"Hillview Road","status":"Not Requested"}]}
+/// customer : {"id":"1","name":"Aftab Hussain","email":"a03003132335@gmail.com","phone":"03133473749","address":"dummy","city":"Karachi","state":"Sindh","country":"Pakistan","postal_code":"9200","date_of_birth":"2025-05-15","gender":"male","profile_image":"https://innsurance.flash-speed.online/","status":"1","isDeleted":"0","createdBy":"-1","createdDtm":"2025-05-08 19:50:40","updatedBy":"15","updatedDtm":"2025-05-31 21:08:02","total_rides":null,"used_rides":null,"remaining_rides":null,"contact_number":"1111111111111","insurance_plan":[{"duration":" $15 / 6 Months","rides":"3 Free Rides","per_day":"$50 per ride Covered"},{"duration":" $15 / 6 Months","rides":"3 Free Rides","per_day":"$50 per ride Covered"}],"rides":[{"date":"2025-05-20","time":"10:00 AM","ride_id":"RIDE001","pickup":"Main Street","drop":"Park Avenue","status":"Completed"},{"date":"2025-05-22","time":"02:00 PM","ride_id":"RIDE002","pickup":"Central Mall","drop":"Greenwood Plaza","status":"Ongoing"},{"date":"2025-05-25","time":"04:00 PM","ride_id":"RIDE003","pickup":"Sunset Boulevard","drop":"Hillview Road","status":"Not Requested"}]}
 
 DetailsUserModel detailsUserModelFromJson(String str) => DetailsUserModel.fromJson(json.decode(str));
 String detailsUserModelToJson(DetailsUserModel data) => json.encode(data.toJson());
@@ -46,29 +46,29 @@ DetailsUserModel copyWith({  bool? status,
 
 }
 
-/// id : "7"
-/// name : "Rakesh"
-/// email : "rakeshlohana15@gmail.com"
-/// phone : "+923463960892"
-/// address : "Sahib zada"
-/// city : ""
-/// state : ""
+/// id : "1"
+/// name : "Aftab Hussain"
+/// email : "a03003132335@gmail.com"
+/// phone : "03133473749"
+/// address : "dummy"
+/// city : "Karachi"
+/// state : "Sindh"
 /// country : "Pakistan"
 /// postal_code : "9200"
-/// date_of_birth : "2025-05-30"
+/// date_of_birth : "2025-05-15"
 /// gender : "male"
-/// profile_image : "https://innsurance.flash-speed.online/uploads/images/1748120983_appointment.png"
+/// profile_image : "https://innsurance.flash-speed.online/"
 /// status : "1"
 /// isDeleted : "0"
-/// createdBy : "15"
-/// createdDtm : "2025-05-13 15:33:46"
-/// updatedBy : null
-/// updatedDtm : "2025-05-28 17:39:13"
-/// total_rides : "3"
-/// used_rides : "2"
-/// remaining_rides : "1"
-/// contact_number : "03133473749"
-/// insurance_plan : {"duration":" $15 / 6 Months","rides":"3 Free Rides","per_day":"$50 per ride Covered"}
+/// createdBy : "-1"
+/// createdDtm : "2025-05-08 19:50:40"
+/// updatedBy : "15"
+/// updatedDtm : "2025-05-31 21:08:02"
+/// total_rides : null
+/// used_rides : null
+/// remaining_rides : null
+/// contact_number : "1111111111111"
+/// insurance_plan : [{"duration":" $15 / 6 Months","rides":"3 Free Rides","per_day":"$50 per ride Covered"},{"duration":" $15 / 6 Months","rides":"3 Free Rides","per_day":"$50 per ride Covered"}]
 /// rides : [{"date":"2025-05-20","time":"10:00 AM","ride_id":"RIDE001","pickup":"Main Street","drop":"Park Avenue","status":"Completed"},{"date":"2025-05-22","time":"02:00 PM","ride_id":"RIDE002","pickup":"Central Mall","drop":"Greenwood Plaza","status":"Ongoing"},{"date":"2025-05-25","time":"04:00 PM","ride_id":"RIDE003","pickup":"Sunset Boulevard","drop":"Hillview Road","status":"Not Requested"}]
 
 Customer customerFromJson(String str) => Customer.fromJson(json.decode(str));
@@ -91,13 +91,13 @@ class Customer {
       String? isDeleted, 
       String? createdBy, 
       String? createdDtm, 
-      dynamic updatedBy, 
+      String? updatedBy, 
       String? updatedDtm, 
-      String? totalRides, 
-      String? usedRides, 
-      String? remainingRides, 
+      dynamic totalRides, 
+      dynamic usedRides, 
+      dynamic remainingRides, 
       String? contactNumber, 
-      InsurancePlan? insurancePlan, 
+      List<InsurancePlan>? insurancePlan, 
       List<Rides>? rides,}){
     _id = id;
     _name = name;
@@ -148,7 +148,12 @@ class Customer {
     _usedRides = json['used_rides'];
     _remainingRides = json['remaining_rides'];
     _contactNumber = json['contact_number'];
-    _insurancePlan = json['insurance_plan'] != null ? InsurancePlan.fromJson(json['insurance_plan']) : null;
+    if (json['insurance_plan'] != null) {
+      _insurancePlan = [];
+      json['insurance_plan'].forEach((v) {
+        _insurancePlan?.add(InsurancePlan.fromJson(v));
+      });
+    }
     if (json['rides'] != null) {
       _rides = [];
       json['rides'].forEach((v) {
@@ -172,13 +177,13 @@ class Customer {
   String? _isDeleted;
   String? _createdBy;
   String? _createdDtm;
-  dynamic _updatedBy;
+  String? _updatedBy;
   String? _updatedDtm;
-  String? _totalRides;
-  String? _usedRides;
-  String? _remainingRides;
+  dynamic _totalRides;
+  dynamic _usedRides;
+  dynamic _remainingRides;
   String? _contactNumber;
-  InsurancePlan? _insurancePlan;
+  List<InsurancePlan>? _insurancePlan;
   List<Rides>? _rides;
 Customer copyWith({  String? id,
   String? name,
@@ -196,13 +201,13 @@ Customer copyWith({  String? id,
   String? isDeleted,
   String? createdBy,
   String? createdDtm,
-  dynamic updatedBy,
+  String? updatedBy,
   String? updatedDtm,
-  String? totalRides,
-  String? usedRides,
-  String? remainingRides,
+  dynamic totalRides,
+  dynamic usedRides,
+  dynamic remainingRides,
   String? contactNumber,
-  InsurancePlan? insurancePlan,
+  List<InsurancePlan>? insurancePlan,
   List<Rides>? rides,
 }) => Customer(  id: id ?? _id,
   name: name ?? _name,
@@ -245,13 +250,13 @@ Customer copyWith({  String? id,
   String? get isDeleted => _isDeleted;
   String? get createdBy => _createdBy;
   String? get createdDtm => _createdDtm;
-  dynamic get updatedBy => _updatedBy;
+  String? get updatedBy => _updatedBy;
   String? get updatedDtm => _updatedDtm;
-  String? get totalRides => _totalRides;
-  String? get usedRides => _usedRides;
-  String? get remainingRides => _remainingRides;
+  dynamic get totalRides => _totalRides;
+  dynamic get usedRides => _usedRides;
+  dynamic get remainingRides => _remainingRides;
   String? get contactNumber => _contactNumber;
-  InsurancePlan? get insurancePlan => _insurancePlan;
+  List<InsurancePlan>? get insurancePlan => _insurancePlan;
   List<Rides>? get rides => _rides;
 
   Map<String, dynamic> toJson() {
@@ -279,7 +284,7 @@ Customer copyWith({  String? id,
     map['remaining_rides'] = _remainingRides;
     map['contact_number'] = _contactNumber;
     if (_insurancePlan != null) {
-      map['insurance_plan'] = _insurancePlan?.toJson();
+      map['insurance_plan'] = _insurancePlan?.map((v) => v.toJson()).toList();
     }
     if (_rides != null) {
       map['rides'] = _rides?.map((v) => v.toJson()).toList();

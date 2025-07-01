@@ -131,11 +131,11 @@ class LoginScreen extends StatelessWidget {
                         ),
 
                         const SizedBox(height: 50),
-                        SignUpPrompt(onTap: () {
-                          emailController.clear();
-                          phoneController.clear();
-                          RouteUtils.push(context, SignUpScreen());
-                        }),
+                        // SignUpPrompt(onTap: () {
+                        //   emailController.clear();
+                        //   phoneController.clear();
+                        //   RouteUtils.push(context, SignUpScreen());
+                        // }),
                       ],
                     ),
                   ),

@@ -5,9 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:e_ride_up/providers/custom_provider.dart'; // make sure this import path is correct
+import 'dart:io';
+
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
+  HttpOverrides.global = MyHttpOverrides();
+
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
@@ -39,5 +44,16 @@ class MyApp extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }

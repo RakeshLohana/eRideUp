@@ -1,12 +1,16 @@
 import 'package:e_ride_up/core/constants/app_colors.dart';
 import 'package:e_ride_up/core/utils/app_utility.dart';
+import 'package:e_ride_up/core/utils/route_utils.dart';
+import 'package:e_ride_up/core/widgets/custom_elevated.dart';
 import 'package:e_ride_up/models/DetailsUserModel.dart';
 import 'package:e_ride_up/providers/custom_provider.dart';
+import 'package:e_ride_up/views/map_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class RideHistoryCard extends StatefulWidget {
   final CustomProvider authProvider;
-  const RideHistoryCard({super.key, required this.authProvider});
+  const RideHistoryCard({super.key, required this.authProvider, });
 
   @override
   State<RideHistoryCard> createState() => _RideHistoryCardState();
@@ -47,6 +51,8 @@ class _RideHistoryCardState extends State<RideHistoryCard> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
+        Gap(10),
         const Text("Ride History", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
 
         SingleChildScrollView(
