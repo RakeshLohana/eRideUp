@@ -2,11 +2,56 @@ import 'package:e_ride_up/core/constants/general.dart';
 import 'package:e_ride_up/core/utils/toastification_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class AppUtility {
+
+
+
+
+  static const String _apiKey = 'AIzaSyD1Mgji2oCIXn7jPCHnImwZuDAdCfe7SMI';
+
+
+  /// Returns travel duration in **minutes** between two coordinates using Google Distance Matrix API.
+  static Future<int?> getTravelDurationInMinutes({
+  required double originLat,
+  required double originLng,
+  required double destLat,
+  required double destLng,
+  String mode = 'driving',
+  }) async {
+  final String url =
+  'https://maps.googleapis.com/maps/api/distancematrix/json'
+  '?origins=$originLat,$originLng'
+  '&destinations=$destLat,$destLng'
+  '&mode=$mode'
+  '&key=$_apiKey';
+
+  final response = await http.get(Uri.parse(url));
+
+  if (response.statusCode == 200) {
+  final data = json.decode(response.body);
+  if (data['rows'] != null &&
+  data['rows'].isNotEmpty &&
+  data['rows'][0]['elements'][0]['status'] == 'OK') {
+  int seconds = data['rows'][0]['elements'][0]['duration']['value'];
+  return (seconds / 60).round(); // in minutes
+  } else {
+  print('Error in response: ${data['rows'][0]['elements'][0]['status']}');
+  }
+  } else {
+  print('HTTP Error: ${response.statusCode}');
+  }
+
+  return null;
+  }
+
+
 
 
   static Future<void> showModal({
@@ -141,34 +186,81 @@ class AppUtility {
   static String rideStatusCompleted = "Completed";
   static String rideStatusNotRequested = "Not Requested";
 
-  static Future<Position?> getCurrentLocation() async {
+  static String bookByYourSelfType = "BBS";
+  static String bookBySystemType = "SYSTEM";
+
+
+  static Future<Position?> getCurrentLocation(BuildContext context) async {
     bool serviceEnabled;
     LocationPermission permission;
 
+    // Check if location services are enabled
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      // Location services are not enabled
+      await _showSettingsDialog(
+        context,
+        title: 'Location Services Disabled',
+        content: 'Please enable location services in settings.',
+      );
       return null;
     }
 
-    // Check for permissions
+    // Check permission
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        // Permissions are denied
+        await _showSettingsDialog(
+          context,
+          title: 'Permission Denied',
+          content: 'Location permission is required. Please allow it from settings.',
+        );
         return null;
       }
     }
 
+    // Denied forever
     if (permission == LocationPermission.deniedForever) {
-      // Permissions are permanently denied
+      await _showSettingsDialog(
+        context,
+        title: 'Permission Permanently Denied',
+        content: 'Location permission is permanently denied. Please allow it from settings.',
+      );
       return null;
     }
 
-    // Get current position
+    // Everything is fine, get the location
     return await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
   }
-}
+
+  static Future<void> _showSettingsDialog(
+      BuildContext context, {
+        required String title,
+        required String content,
+      }) async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext ctx) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(content),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () => Navigator.of(ctx).pop(),
+            ),
+            TextButton(
+              child: const Text('Open Settings'),
+              onPressed: () async {
+                Navigator.of(ctx).pop();
+                await Geolocator.openAppSettings();
+                await Geolocator.openLocationSettings();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }}

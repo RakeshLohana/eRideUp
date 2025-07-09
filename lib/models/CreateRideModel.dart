@@ -9,7 +9,7 @@ class CreateRideModel {
   CreateRideModel({
       bool? status, 
       String? message, 
-      num? rideId,}){
+      String? rideId,}){
     _status = status;
     _message = message;
     _rideId = rideId;
@@ -22,17 +22,17 @@ class CreateRideModel {
   }
   bool? _status;
   String? _message;
-  num? _rideId;
+  String? _rideId;
 CreateRideModel copyWith({  bool? status,
   String? message,
-  num? rideId,
+  String? rideId,
 }) => CreateRideModel(  status: status ?? _status,
   message: message ?? _message,
   rideId: rideId ?? _rideId,
 );
   bool? get status => _status;
   String? get message => _message;
-  num? get rideId => _rideId;
+  String? get rideId => _rideId;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

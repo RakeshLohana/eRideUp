@@ -53,9 +53,9 @@ class _RideHistoryCardState extends State<RideHistoryCard> {
       children: [
 
         Gap(10),
-        const Text("Ride History", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+    (rides?.isNotEmpty??false)? Text("Ride History", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)):Container(),
 
-        SingleChildScrollView(
+         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
 
@@ -91,7 +91,7 @@ class _RideHistoryCardState extends State<RideHistoryCard> {
                                     Text("${index + 1}  ", style: const TextStyle(fontWeight: FontWeight.bold)),
                                     Flexible(
                                       child: Text(
-                                        ride?.date ?? '',
+                                        ride?.updatedAt ?? '',
                                         style: const TextStyle(),
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 1,
@@ -100,7 +100,7 @@ class _RideHistoryCardState extends State<RideHistoryCard> {
                                   ],
                                 ),
                                 const SizedBox(height: 6),
-                                buildRideRow("Ride ID: ", ride?.rideId, Colors.teal),
+                                buildRideRow("Ride ID: ", ride?.id, Colors.teal),
                                 buildRideRow("Pickup: ", ride?.pickup, Colors.blue),
                                 buildRideRow("Drop: ", ride?.drop, Colors.green),
                                 buildRideRow("Status: ", ride?.status, Colors.green),
@@ -115,7 +115,7 @@ class _RideHistoryCardState extends State<RideHistoryCard> {
                 },)
 
           ),
-        ),
+        )
       ],
     );
   }

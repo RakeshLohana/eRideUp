@@ -1,8 +1,10 @@
 import 'package:e_ride_up/core/constants/app_colors.dart';
 import 'package:e_ride_up/core/services/shared_preference_service.dart';
 import 'package:e_ride_up/core/utils/app_utility.dart';
+import 'package:e_ride_up/core/utils/route_utils.dart';
 import 'package:e_ride_up/models/DetailsUserModel.dart';
 import 'package:e_ride_up/providers/custom_provider.dart';
+import 'package:e_ride_up/views/wallet_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -58,6 +60,7 @@ class _InsuranceScreenState extends State<InsuranceScreen> {
                         ),
                       ),
                     ),
+
                     Align(
                       alignment: Alignment.topRight,
                       child: Container(
@@ -85,6 +88,30 @@ class _InsuranceScreenState extends State<InsuranceScreen> {
                         ),
                       ),
                     ),
+                    Positioned(
+                      top: 30,
+                      right: 55,
+                      child: GestureDetector(
+                          onTap:(){
+
+                            RouteUtils.push(context, WalletScreen());
+
+                          },
+                          child: Icon(Icons.notifications,size:25,color: AppColor.white,)),
+                    ),
+                    Positioned(
+                      top: 30,
+                      right: 16,
+                      child: GestureDetector(
+                          onTap:(){
+
+                            RouteUtils.push(context, WalletScreen());
+
+                          },
+                          child: Icon(Icons.wallet,size:25,color: AppColor.white,)),
+                    ),
+
+
 
                   ],
                 ),
@@ -120,14 +147,21 @@ class _InsuranceScreenState extends State<InsuranceScreen> {
                             InsurancePlan insurancePlan =
                                 value.detailsUserModel?.customer?.insurancePlan?[index] ??
                                     InsurancePlan();
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                            return Container(
+                              color: AppColor.privacyPolicyColor,
+                              padding: const EdgeInsets.all(12.0),
+                              child: Row(
                                 children: [
-                                  InfoRow(text: insurancePlan.duration ?? ""),
-                                  InfoRow(text: insurancePlan.rides ?? ""),
-                                  InfoRow(text: insurancePlan.perDay ?? ""),
+
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        InfoRow(text: insurancePlan.duration ?? ""),
+                                        InfoRow(text: insurancePlan.rides ?? ""),
+                                        InfoRow(text: insurancePlan.perDay ?? ""),
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
                             );

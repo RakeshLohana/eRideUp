@@ -45,7 +45,12 @@ class _WalletScreenState extends State<WalletScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Icon(Icons.menu, color: Colors.black),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.menu, color: Colors.black  ),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
         title: Text('Wallet', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
       ),
       body: Consumer<CustomProvider>(

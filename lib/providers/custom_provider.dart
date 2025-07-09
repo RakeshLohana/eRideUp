@@ -110,6 +110,10 @@ class CustomProvider extends ChangeNotifier {
     _otpPin=pin;
     notifyListeners();
   }
+  void clearRideDetails(){
+    _createRideModel=CreateRideModel();
+    notifyListeners();
+  }
 
 
   void setBottomBarIndex(int index){
@@ -135,7 +139,7 @@ class CustomProvider extends ChangeNotifier {
       }
     } catch (e) {
       printLog(e.toString());
-      ToastUtil.showToast(context: context,message: ' login failed: ${e}',type: ToastType.error);
+      ToastUtil.showToast(context: context,message: 'login failed',type: ToastType.error);
 
 
     } finally {
@@ -168,12 +172,12 @@ class CustomProvider extends ChangeNotifier {
 
 
 
-  Future<void> createRide(String email,String lat,String lng  , BuildContext context) async {
+  Future<void> createRide(String email,String lat,String lng  ,String type,String rideId, BuildContext context) async {
     _isCreateRideLoading = true;
     notifyListeners();
 
     try {
-      _createRideModel = await _apiService.createRide(email,lat,lng);
+      _createRideModel = await _apiService.createRide(email,lat,lng,type,rideId);
       if(_createRideModel?.status==true){
         printLog(_createRideModel?.toJson());
       }
@@ -198,7 +202,7 @@ class CustomProvider extends ChangeNotifier {
     } catch (e) {
       printLog(e.toString());
 
-      ToastUtil.showToast(context: context,message: ' login failed: ${e}',type: ToastType.error);
+      ToastUtil.showToast(context: context,message: ' login failed ',type: ToastType.error);
 
 
     } finally {
@@ -259,7 +263,7 @@ class CustomProvider extends ChangeNotifier {
       }
 
     } catch (e) {
-      ToastUtil.showToast(context: context, message: e.toString(), type: ToastType.error);
+      ToastUtil.showToast(context: context, message: "An error occurred while verifying otp", type: ToastType.error);
       printLog("error in verifying otp:===>" + e.toString());
     } finally {
       _isVerifyOtpLoading = false;
@@ -293,7 +297,7 @@ class CustomProvider extends ChangeNotifier {
     } catch (e) {
       ToastUtil.showToast(
         context: context,
-        message: e.toString(),
+        message: "An error occurred",
         type: ToastType.error,
       );
       printLog("Error updating customer: $e");
@@ -332,7 +336,7 @@ class CustomProvider extends ChangeNotifier {
     } catch (e) {
       ToastUtil.showToast(
         context: context,
-        message: e.toString(),
+        message: "An error occurred",
         type: ToastType.error,
       );
       printLog("Error deleting customer: $e");
@@ -377,7 +381,7 @@ class CustomProvider extends ChangeNotifier {
     } catch (e) {
       ToastUtil.showToast(
         context: context,
-        message: e.toString(),
+        message: "An error occurred",
         type: ToastType.error,
       );
       printLog("Error getting user details: $e");

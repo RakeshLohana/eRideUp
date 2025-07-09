@@ -110,7 +110,7 @@ class ApiService {
 
 
 
-  Future<CreateRideModel> createRide(String email,String lat,String lng ) async {
+  Future<CreateRideModel> createRide(String email,String lat,String lng,String type ,String rideId) async {
 
 
     Response response = await _client.post(
@@ -119,7 +119,9 @@ class ApiService {
       {
         "email":email,
         "lat":lat,
-        "lng":lng
+        "lng":lng,
+        "ride_id":rideId,
+        "type":type
       },
     );
 

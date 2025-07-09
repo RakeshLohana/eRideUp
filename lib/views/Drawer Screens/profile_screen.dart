@@ -83,14 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       final provider = Provider.of<CustomProvider>(context, listen: false);
       await provider.updateCustomerDetails(customer, context);
-      // if(provider.updateCustomerModel?.message!=null && provider.updateCustomerModel?.status==true){
-      //   // final updatedUser = await SharedPreferenceService.getUserDetails();
-      //   // setState(() {
-      //   //   _user = updatedUser;
-      //   //   _imageUrl = _user?.profileImage;
-      //   // });
-      //
-      // }
+
 
 
     }

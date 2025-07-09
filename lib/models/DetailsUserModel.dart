@@ -1,7 +1,7 @@
 import 'dart:convert';
 /// status : true
-/// message : "Details Fetch"
-/// customer : {"id":"1","name":"Aftab Hussain","email":"a03003132335@gmail.com","phone":"03133473749","address":"dummy","city":"Karachi","state":"Sindh","country":"Pakistan","postal_code":"9200","date_of_birth":"2025-05-15","gender":"male","profile_image":"https://innsurance.flash-speed.online/","status":"1","isDeleted":"0","createdBy":"-1","createdDtm":"2025-05-08 19:50:40","updatedBy":"15","updatedDtm":"2025-05-31 21:08:02","total_rides":null,"used_rides":null,"remaining_rides":null,"contact_number":"1111111111111","insurance_plan":[{"duration":" $15 / 6 Months","rides":"3 Free Rides","per_day":"$50 per ride Covered"},{"duration":" $15 / 6 Months","rides":"3 Free Rides","per_day":"$50 per ride Covered"}],"rides":[{"date":"2025-05-20","time":"10:00 AM","ride_id":"RIDE001","pickup":"Main Street","drop":"Park Avenue","status":"Completed"},{"date":"2025-05-22","time":"02:00 PM","ride_id":"RIDE002","pickup":"Central Mall","drop":"Greenwood Plaza","status":"Ongoing"},{"date":"2025-05-25","time":"04:00 PM","ride_id":"RIDE003","pickup":"Sunset Boulevard","drop":"Hillview Road","status":"Not Requested"}]}
+/// message : "Details fetched successfully"
+/// customer : {"id":"71","name":"rakeshlohana","email":"rakeshlohana15@gmail.com","phone":"300000000","address":"Karachi Sindh","city":"Karachi","state":"Sindh","country":"Pakistan","postal_code":"DSF","date_of_birth":"2025-07-08","gender":"male","profile_image":"https://innsurance.flash-speed.online/","status":"0","isDeleted":"0","createdBy":"22","createdDtm":"2025-07-07 21:16:32","updatedBy":null,"updatedDtm":"2025-07-07 21:18:09","total_rides":null,"used_rides":null,"remaining_rides":null,"contact_number":"1111111111111","insurance_plan":[{"duration":"$15 / 6 Months","rides":"3 Free Rides","per_day":"$50 per ride Covered"}],"rides":[{"id":"15","user_id":"71","pickup":"","drop":"","status":"Not Requested","created_at":"2025-07-07 21:16:32","updated_at":"2025-07-07 21:16:32","pickup_lat":null,"pickup_lng":null,"otp":null,"arriving_time":null,"amount_cover":null,"amount_you_pay":null,"drop_lat":null,"drop_lng":null},{"id":"16","user_id":"71","pickup":"","drop":"","status":"Not Requested","created_at":"2025-07-07 21:16:32","updated_at":"2025-07-07 21:16:32","pickup_lat":null,"pickup_lng":null,"otp":null,"arriving_time":null,"amount_cover":null,"amount_you_pay":null,"drop_lat":null,"drop_lng":null},{"id":"17","user_id":"71","pickup":"","drop":"","status":"Not Requested","created_at":"2025-07-07 21:16:32","updated_at":"2025-07-07 21:16:32","pickup_lat":null,"pickup_lng":null,"otp":null,"arriving_time":null,"amount_cover":null,"amount_you_pay":null,"drop_lat":null,"drop_lng":null}]}
 
 DetailsUserModel detailsUserModelFromJson(String str) => DetailsUserModel.fromJson(json.decode(str));
 String detailsUserModelToJson(DetailsUserModel data) => json.encode(data.toJson());
@@ -46,30 +46,30 @@ DetailsUserModel copyWith({  bool? status,
 
 }
 
-/// id : "1"
-/// name : "Aftab Hussain"
-/// email : "a03003132335@gmail.com"
-/// phone : "03133473749"
-/// address : "dummy"
+/// id : "71"
+/// name : "rakeshlohana"
+/// email : "rakeshlohana15@gmail.com"
+/// phone : "300000000"
+/// address : "Karachi Sindh"
 /// city : "Karachi"
 /// state : "Sindh"
 /// country : "Pakistan"
-/// postal_code : "9200"
-/// date_of_birth : "2025-05-15"
+/// postal_code : "DSF"
+/// date_of_birth : "2025-07-08"
 /// gender : "male"
 /// profile_image : "https://innsurance.flash-speed.online/"
-/// status : "1"
+/// status : "0"
 /// isDeleted : "0"
-/// createdBy : "-1"
-/// createdDtm : "2025-05-08 19:50:40"
-/// updatedBy : "15"
-/// updatedDtm : "2025-05-31 21:08:02"
+/// createdBy : "22"
+/// createdDtm : "2025-07-07 21:16:32"
+/// updatedBy : null
+/// updatedDtm : "2025-07-07 21:18:09"
 /// total_rides : null
 /// used_rides : null
 /// remaining_rides : null
 /// contact_number : "1111111111111"
-/// insurance_plan : [{"duration":" $15 / 6 Months","rides":"3 Free Rides","per_day":"$50 per ride Covered"},{"duration":" $15 / 6 Months","rides":"3 Free Rides","per_day":"$50 per ride Covered"}]
-/// rides : [{"date":"2025-05-20","time":"10:00 AM","ride_id":"RIDE001","pickup":"Main Street","drop":"Park Avenue","status":"Completed"},{"date":"2025-05-22","time":"02:00 PM","ride_id":"RIDE002","pickup":"Central Mall","drop":"Greenwood Plaza","status":"Ongoing"},{"date":"2025-05-25","time":"04:00 PM","ride_id":"RIDE003","pickup":"Sunset Boulevard","drop":"Hillview Road","status":"Not Requested"}]
+/// insurance_plan : [{"duration":"$15 / 6 Months","rides":"3 Free Rides","per_day":"$50 per ride Covered"}]
+/// rides : [{"id":"15","user_id":"71","pickup":"","drop":"","status":"Not Requested","created_at":"2025-07-07 21:16:32","updated_at":"2025-07-07 21:16:32","pickup_lat":null,"pickup_lng":null,"otp":null,"arriving_time":null,"amount_cover":null,"amount_you_pay":null,"drop_lat":null,"drop_lng":null},{"id":"16","user_id":"71","pickup":"","drop":"","status":"Not Requested","created_at":"2025-07-07 21:16:32","updated_at":"2025-07-07 21:16:32","pickup_lat":null,"pickup_lng":null,"otp":null,"arriving_time":null,"amount_cover":null,"amount_you_pay":null,"drop_lat":null,"drop_lng":null},{"id":"17","user_id":"71","pickup":"","drop":"","status":"Not Requested","created_at":"2025-07-07 21:16:32","updated_at":"2025-07-07 21:16:32","pickup_lat":null,"pickup_lng":null,"otp":null,"arriving_time":null,"amount_cover":null,"amount_you_pay":null,"drop_lat":null,"drop_lng":null}]
 
 Customer customerFromJson(String str) => Customer.fromJson(json.decode(str));
 String customerToJson(Customer data) => json.encode(data.toJson());
@@ -91,7 +91,7 @@ class Customer {
       String? isDeleted, 
       String? createdBy, 
       String? createdDtm, 
-      String? updatedBy, 
+      dynamic updatedBy, 
       String? updatedDtm, 
       dynamic totalRides, 
       dynamic usedRides, 
@@ -177,7 +177,7 @@ class Customer {
   String? _isDeleted;
   String? _createdBy;
   String? _createdDtm;
-  String? _updatedBy;
+  dynamic _updatedBy;
   String? _updatedDtm;
   dynamic _totalRides;
   dynamic _usedRides;
@@ -201,7 +201,7 @@ Customer copyWith({  String? id,
   String? isDeleted,
   String? createdBy,
   String? createdDtm,
-  String? updatedBy,
+  dynamic updatedBy,
   String? updatedDtm,
   dynamic totalRides,
   dynamic usedRides,
@@ -250,7 +250,7 @@ Customer copyWith({  String? id,
   String? get isDeleted => _isDeleted;
   String? get createdBy => _createdBy;
   String? get createdDtm => _createdDtm;
-  String? get updatedBy => _updatedBy;
+  dynamic get updatedBy => _updatedBy;
   String? get updatedDtm => _updatedDtm;
   dynamic get totalRides => _totalRides;
   dynamic get usedRides => _usedRides;
@@ -294,79 +294,160 @@ Customer copyWith({  String? id,
 
 }
 
-/// date : "2025-05-20"
-/// time : "10:00 AM"
-/// ride_id : "RIDE001"
-/// pickup : "Main Street"
-/// drop : "Park Avenue"
-/// status : "Completed"
+/// id : "15"
+/// user_id : "71"
+/// pickup : ""
+/// drop : ""
+/// status : "Not Requested"
+/// created_at : "2025-07-07 21:16:32"
+/// updated_at : "2025-07-07 21:16:32"
+/// pickup_lat : null
+/// pickup_lng : null
+/// otp : null
+/// arriving_time : null
+/// amount_cover : null
+/// amount_you_pay : null
+/// drop_lat : null
+/// drop_lng : null
 
 Rides ridesFromJson(String str) => Rides.fromJson(json.decode(str));
 String ridesToJson(Rides data) => json.encode(data.toJson());
 class Rides {
   Rides({
-      String? date, 
-      String? time, 
-      String? rideId, 
+      String? id, 
+      String? userId, 
       String? pickup, 
       String? drop, 
-      String? status,}){
-    _date = date;
-    _time = time;
-    _rideId = rideId;
+      String? status, 
+      String? createdAt, 
+      String? updatedAt, 
+      dynamic pickupLat, 
+      dynamic pickupLng, 
+      dynamic otp, 
+      dynamic arrivingTime, 
+      dynamic amountCover, 
+      dynamic amountYouPay, 
+      dynamic dropLat, 
+      dynamic dropLng,}){
+    _id = id;
+    _userId = userId;
     _pickup = pickup;
     _drop = drop;
     _status = status;
+    _createdAt = createdAt;
+    _updatedAt = updatedAt;
+    _pickupLat = pickupLat;
+    _pickupLng = pickupLng;
+    _otp = otp;
+    _arrivingTime = arrivingTime;
+    _amountCover = amountCover;
+    _amountYouPay = amountYouPay;
+    _dropLat = dropLat;
+    _dropLng = dropLng;
 }
 
   Rides.fromJson(dynamic json) {
-    _date = json['date'];
-    _time = json['time'];
-    _rideId = json['ride_id'];
+    _id = json['id'];
+    _userId = json['user_id'];
     _pickup = json['pickup'];
     _drop = json['drop'];
     _status = json['status'];
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
+    _pickupLat = json['pickup_lat'];
+    _pickupLng = json['pickup_lng'];
+    _otp = json['otp'];
+    _arrivingTime = json['arriving_time'];
+    _amountCover = json['amount_cover'];
+    _amountYouPay = json['amount_you_pay'];
+    _dropLat = json['drop_lat'];
+    _dropLng = json['drop_lng'];
   }
-  String? _date;
-  String? _time;
-  String? _rideId;
+  String? _id;
+  String? _userId;
   String? _pickup;
   String? _drop;
   String? _status;
-Rides copyWith({  String? date,
-  String? time,
-  String? rideId,
+  String? _createdAt;
+  String? _updatedAt;
+  dynamic _pickupLat;
+  dynamic _pickupLng;
+  dynamic _otp;
+  dynamic _arrivingTime;
+  dynamic _amountCover;
+  dynamic _amountYouPay;
+  dynamic _dropLat;
+  dynamic _dropLng;
+Rides copyWith({  String? id,
+  String? userId,
   String? pickup,
   String? drop,
   String? status,
-}) => Rides(  date: date ?? _date,
-  time: time ?? _time,
-  rideId: rideId ?? _rideId,
+  String? createdAt,
+  String? updatedAt,
+  dynamic pickupLat,
+  dynamic pickupLng,
+  dynamic otp,
+  dynamic arrivingTime,
+  dynamic amountCover,
+  dynamic amountYouPay,
+  dynamic dropLat,
+  dynamic dropLng,
+}) => Rides(  id: id ?? _id,
+  userId: userId ?? _userId,
   pickup: pickup ?? _pickup,
   drop: drop ?? _drop,
   status: status ?? _status,
+  createdAt: createdAt ?? _createdAt,
+  updatedAt: updatedAt ?? _updatedAt,
+  pickupLat: pickupLat ?? _pickupLat,
+  pickupLng: pickupLng ?? _pickupLng,
+  otp: otp ?? _otp,
+  arrivingTime: arrivingTime ?? _arrivingTime,
+  amountCover: amountCover ?? _amountCover,
+  amountYouPay: amountYouPay ?? _amountYouPay,
+  dropLat: dropLat ?? _dropLat,
+  dropLng: dropLng ?? _dropLng,
 );
-  String? get date => _date;
-  String? get time => _time;
-  String? get rideId => _rideId;
+  String? get id => _id;
+  String? get userId => _userId;
   String? get pickup => _pickup;
   String? get drop => _drop;
   String? get status => _status;
+  String? get createdAt => _createdAt;
+  String? get updatedAt => _updatedAt;
+  dynamic get pickupLat => _pickupLat;
+  dynamic get pickupLng => _pickupLng;
+  dynamic get otp => _otp;
+  dynamic get arrivingTime => _arrivingTime;
+  dynamic get amountCover => _amountCover;
+  dynamic get amountYouPay => _amountYouPay;
+  dynamic get dropLat => _dropLat;
+  dynamic get dropLng => _dropLng;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['date'] = _date;
-    map['time'] = _time;
-    map['ride_id'] = _rideId;
+    map['id'] = _id;
+    map['user_id'] = _userId;
     map['pickup'] = _pickup;
     map['drop'] = _drop;
     map['status'] = _status;
+    map['created_at'] = _createdAt;
+    map['updated_at'] = _updatedAt;
+    map['pickup_lat'] = _pickupLat;
+    map['pickup_lng'] = _pickupLng;
+    map['otp'] = _otp;
+    map['arriving_time'] = _arrivingTime;
+    map['amount_cover'] = _amountCover;
+    map['amount_you_pay'] = _amountYouPay;
+    map['drop_lat'] = _dropLat;
+    map['drop_lng'] = _dropLng;
     return map;
   }
 
 }
 
-/// duration : " $15 / 6 Months"
+/// duration : "$15 / 6 Months"
 /// rides : "3 Free Rides"
 /// per_day : "$50 per ride Covered"
 

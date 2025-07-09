@@ -3,7 +3,9 @@ import 'package:e_ride_up/core/services/shared_preference_service.dart';
 import 'package:e_ride_up/core/utils/app_utility.dart';
 import 'package:e_ride_up/core/utils/route_utils.dart';
 import 'package:e_ride_up/models/DetailsUserModel.dart';
+import 'package:e_ride_up/models/GetRideDetails.dart';
 import 'package:e_ride_up/providers/custom_provider.dart';
+import 'package:e_ride_up/views/Drawer%20Screens/ride_screen.dart';
 import 'package:e_ride_up/views/dashboard_screen.dart';
 import 'package:e_ride_up/views/login_screen.dart';
 import 'package:e_ride_up/views/all_rides_screen.dart';
@@ -96,21 +98,26 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
                   // Menu Items
                   DrawerItem(icon: Icons.home, text: "Home", onTap: () {
-                    Navigator.pop(context);
+
+                    RouteUtils.pushAndRemoveUntil(context, DashboardScreen());
+                    value.setBottomBarIndex(1);
+
                   }),
                   DrawerItem(icon: Icons.person, text: "My Profile", onTap: () {
+
                     RouteUtils.pushAndRemoveUntil(context, DashboardScreen());
+                    value.setBottomBarIndex(0);
 
                   }),
                   DrawerItem(icon: Icons.assignment, text: "My Plan", onTap: () {
-                    value.setBottomBarIndex(2);
-                    RouteUtils.pushAndRemoveUntil(context, DashboardScreen());
+                    Navigator.pop(context);
+                    RouteUtils.push(context, RideScreen());
 
                   }),
                   DrawerItem(icon: Icons.directions_car, text: "My Rides", onTap: () {
-                    Navigator.pop(context);
+                    value.setBottomBarIndex(2);
+                    RouteUtils.pushAndRemoveUntil(context, DashboardScreen());
 
-                    RouteUtils.push(context, AllRidesScreen());
 
 
                   }),
