@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'Drawer Screens/insurance_screen.dart';
 import 'Drawer Screens/profile_screen.dart';
 import 'Drawer Screens/ride_screen.dart';
+import 'home_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -23,7 +24,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   final List<Widget> _screens = [
     ProfileScreen(),
-    InsuranceScreen(),
+    HomeScreen(),
     AllRidesScreen(),
   ];
 
@@ -33,8 +34,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       builder: (context, value, child) =>
        Scaffold(
         backgroundColor: Colors.white,
-        drawer:CustomDrawer(),
-        body:  _screens[value.bottomIndex],
+        drawer: CustomDrawer(),
+        body: _screens[value.bottomIndex],
 
          bottomNavigationBar: BottomNavigationBar(
            onTap: (index) {
