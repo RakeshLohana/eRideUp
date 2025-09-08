@@ -1,20 +1,18 @@
 import 'package:e_ride_up/views/Drawer%20Screens/profile_screen.dart';
 import 'package:e_ride_up/views/dashboard_screen.dart';
 import 'package:e_ride_up/views/get_started_page.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:e_ride_up/providers/custom_provider.dart'; // make sure this import path is correct
 import 'dart:io';
 
-
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
 
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -30,7 +28,8 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MultiProvider(
           providers: [
-            ChangeNotifierProvider<CustomProvider>(create: (_) => CustomProvider()),
+            ChangeNotifierProvider<CustomProvider>(
+                create: (_) => CustomProvider()),
             // Add more providers here if needed
           ],
           child: MaterialApp(
@@ -40,15 +39,13 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home:  const GetStartedScreen(),
+            home: const GetStartedScreen(),
           ),
         );
       },
     );
   }
 }
-
-
 
 class MyHttpOverrides extends HttpOverrides {
   @override

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>867452178548-ch8rjhmqfimor915ffne30a5tl30d7p3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.867452178548-ch8rjhmqfimor915ffne30a5tl30d7p3</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>867452178548-7ggad9bjumbghl5vgbbppu4eadh6v3ku.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAUIV7O6Eg3zkR3Ot6q3aJZd4q3jniYUXY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>867452178548</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.erideup.app.eRideUp</string>
+	<key>PROJECT_ID</key>
+	<string>erideup</string>
+	<key>STORAGE_BUCKET</key>
+	<string>erideup.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:867452178548:ios:e8951fd7fbb3d03e240121</string>
+</dict>
+</plist>

@@ -3,7 +3,7 @@ import 'package:e_ride_up/core/utils/toastification_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+// import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
@@ -160,27 +160,27 @@ class AppUtility {
     }
   }
 
-  final GoogleSignIn _googleSignIn = GoogleSignIn(
-    scopes: ['email', 'profile'],
-  );
+  // final GoogleSignIn _googleSignIn = GoogleSignIn(
+  //   scopes: ['email', 'profile'],
+  // );
 
-  Future<GoogleSignInAccount?> googleSigIn() async {
-    try {
-      final googleClient = GoogleSignIn(scopes: ['email', 'profile']);
-      await googleClient.signOut();
-      GoogleSignInAccount? googleAccount = await googleClient.signIn();
-      printLog("This google account ---->" + googleAccount.toString());
-      return googleAccount;
-    } catch (error) {
-      printLog(error);
-      printLog('Google sign-in failed');
-      return null;
-    }
-  }
+  // Future<GoogleSignInAccount?> googleSigIn() async {
+  //   try {
+  //     final googleClient = GoogleSignIn(scopes: ['email', 'profile']);
+  //     await googleClient.signOut();
+  //     GoogleSignInAccount? googleAccount = await googleClient.signIn();
+  //     printLog("This google account ---->" + googleAccount.toString());
+  //     return googleAccount;
+  //   } catch (error) {
+  //     printLog(error);
+  //     printLog('Google sign-in failed');
+  //     return null;
+  //   }
+  // }
 
-  Future<void> signOut() async {
-    await _googleSignIn.signOut();
-  }
+  // Future<void> signOut() async {
+  //   await _googleSignIn.signOut();
+  // }
 
   static String rideStatusOngoing = "Ongoing";
   static String rideStatusCompleted = "Completed";
