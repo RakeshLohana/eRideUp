@@ -1,5 +1,4 @@
-import 'package:e_ride_up/views/Drawer%20Screens/profile_screen.dart';
-import 'package:e_ride_up/views/dashboard_screen.dart';
+import 'package:e_ride_up/core/services/firebase_services.dart';
 import 'package:e_ride_up/views/get_started_page.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +10,7 @@ import 'dart:io';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
-
-  // await Firebase.initializeApp();
+  await FirebaseService.initialize();
   runApp(const MyApp());
 }
 

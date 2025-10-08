@@ -8,6 +8,7 @@ import 'package:e_ride_up/core/widgets/custom_text.dart';
 import 'package:e_ride_up/models/DetailsUserModel.dart';
 import 'package:e_ride_up/providers/custom_provider.dart';
 import 'package:e_ride_up/views/all_rides_screen.dart';
+import 'package:e_ride_up/views/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -17,6 +18,8 @@ import 'package:provider/provider.dart';
 import '../core/widgets/custom_elevated.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -53,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
         toolbarHeight: 30,
         leading: Builder(
           builder: (context) => IconButton(
-            icon: Icon(Icons.menu, size: 28),
+            icon: const Icon(Icons.menu, size: 28),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
@@ -62,9 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.only(top: 5.h, right: 10.w),
             child: GestureDetector(
               onTap: () {
-                // RouteUtils.push(context, WalletScreen());
+                RouteUtils.push(context, const NotificationsScreen());
               },
-              child: Icon(
+              child: const Icon(
                 Icons.notifications_outlined,
                 size: 25,
                 color: AppColor.black,
@@ -88,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Gap(8),
+                          const Gap(8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -96,36 +99,36 @@ class _HomeScreenState extends State<HomeScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(AppUtility.getGreeting(),
-                                      style: TextStyle(fontSize: 16)),
-                                  SizedBox(height: 4),
+                                      style: const TextStyle(fontSize: 16)),
+                                  const SizedBox(height: 4),
                                   Text(
                                       authProvider.detailsUserModel?.customer
                                               ?.name ??
                                           "",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold)),
-                                  SizedBox(height: 4),
+                                  const SizedBox(height: 4),
                                   Row(
                                     children: [
-                                      Text("Plan Status: ",
+                                      const Text("Plan Status: ",
                                           style: TextStyle(fontSize: 14)),
                                       authProvider.detailsUserModel?.customer
                                                   ?.status ==
                                               "1"
-                                          ? Text("Active",
+                                          ? const Text("Active",
                                               style: TextStyle(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.green))
-                                          : Text("UnActive",
+                                          : const Text("UnActive",
                                               style: TextStyle(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.red)),
                                     ],
                                   ),
-                                  Row(
+                                  const Row(
                                     children: [
                                       Text("Your Key: ",
                                           style: TextStyle(fontSize: 14)),
@@ -142,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       //     color: Colors.red)),
                                     ],
                                   ),
-                                  Row(
+                                  const Row(
                                     children: [
                                       Text("Service Expiration: ",
                                           style: TextStyle(fontSize: 14)),
@@ -164,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                           const SizedBox(height: 20),
-                          Text(
+                          const Text(
                             "Current Plan",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -179,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     bottomLeft: Radius.circular(10.r),
                                     bottomRight: Radius.circular(10.r)),
                                 color: Colors.white,
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                       color: Colors.grey,
                                       blurRadius: 2,
@@ -206,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   SizedBox(height: 15.h),
                                   Text(
                                       "${authProvider.detailsUserModel?.customer?.remainingRides ?? "0"} rides remaining",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600)),
                                 ],
@@ -335,7 +338,7 @@ class _HomeScreenState extends State<HomeScreen> {
             if (authProvider.isDetailsUserLoading)
               Container(
                 color: Colors.black45,
-                child: Center(
+                child: const Center(
                   child: CircularProgressIndicator(
                     color: AppColor.appPrimaryColor,
                   ),

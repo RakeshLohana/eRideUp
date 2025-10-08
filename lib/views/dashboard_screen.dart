@@ -1,4 +1,5 @@
 import 'package:e_ride_up/core/constants/app_colors.dart';
+import 'package:e_ride_up/core/services/firebase_services.dart';
 import 'package:e_ride_up/core/widgets/custom_drawer.dart';
 import 'package:e_ride_up/providers/custom_provider.dart';
 import 'package:e_ride_up/views/all_rides_screen.dart';
@@ -17,55 +18,62 @@ class DashboardScreen extends StatefulWidget {
   State<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-
 class _DashboardScreenState extends State<DashboardScreen> {
-
   int _currentIndex = 1;
+  String? _token;
+
+  @override
+  void initState() {
+    super.initState();
+    _getToken();
+  }
+
+  Future<void> _getToken() async {
+    String? token = await FirebaseService.getToken();
+    setState(() {
+      _token = token;
+    });
+  }
+
 
   final List<Widget> _screens = [
     ProfileScreen(),
-    HomeScreen(),
-    AllRidesScreen(),
+    const HomeScreen(),
+    const AllRidesScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return  Consumer<CustomProvider>(
-      builder: (context, value, child) =>
-       Scaffold(
+    return Consumer<CustomProvider>(
+      builder: (context, value, child) => Scaffold(
         backgroundColor: Colors.white,
         drawer: CustomDrawer(),
         body: _screens[value.bottomIndex],
-
-         bottomNavigationBar: BottomNavigationBar(
-           onTap: (index) {
-             value.setBottomBarIndex(index);
-             _currentIndex = index;
-           },
-           backgroundColor: AppColor.appPrimaryColor,
-           selectedItemColor: AppColor.orangeColor,
-           unselectedItemColor: AppColor.white,
-           currentIndex: value.bottomIndex,
-           items: const [
-             BottomNavigationBarItem(
-               icon: Icon(Icons.person, size: 30),
-               label: '',
-             ),
-             BottomNavigationBarItem(
-               icon: Icon(Icons.home, size: 30),
-               label: '',
-             ),
-             BottomNavigationBarItem(
-               icon: Icon(Icons.directions_car, size: 30),
-               label: '',
-             ),
-           ],
-         ),
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: (index) {
+            value.setBottomBarIndex(index);
+            _currentIndex = index;
+          },
+          backgroundColor: AppColor.appPrimaryColor,
+          selectedItemColor: AppColor.orangeColor,
+          unselectedItemColor: AppColor.white,
+          currentIndex: value.bottomIndex,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person, size: 30),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home, size: 30),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.directions_car, size: 30),
+              label: '',
+            ),
+          ],
+        ),
       ),
     );
   }
 }
-
-
-
-

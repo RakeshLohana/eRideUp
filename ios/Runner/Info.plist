@@ -7,6 +7,11 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>We need your location to provide location-based features.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>E Ride Up</string>
 	<key>CFBundleExecutable</key>

@@ -37,6 +37,13 @@
             {
               "client_id": "867452178548-qbgnmi9kftc895dtq03endhf4prljl4b.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "867452178548-ch8rjhmqfimor915ffne30a5tl30d7p3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.erideup.app.eRideUp"
+              }
             }
           ]
         }

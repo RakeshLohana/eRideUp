@@ -10,7 +10,7 @@ import 'package:e_ride_up/core/widgets/signup_pompt.dart';
 import 'package:e_ride_up/core/widgets/textfield_icon.dart';
 import 'package:e_ride_up/providers/custom_provider.dart';
 import 'package:e_ride_up/views/otp_screen.dart';
-import 'package:e_ride_up/views/signup_screen.dart';
+import 'package:e_ride_up/discard/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
